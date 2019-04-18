@@ -1,5 +1,5 @@
 #ifndef _MU_H_
-#define _mu_H_
+#define _MU_H_
 
 #include <microhttpd.h>
 #include <uv.h>
@@ -23,6 +23,14 @@ typedef unsigned int (*MU_REQUEST_HANDLER)(
     MU_RESPONSE *res);
 
 void mu_get(const char *path, MU_REQUEST_HANDLER handler);
+
+void mu_post(const char *path, MU_REQUEST_HANDLER handler);
+
+void mu_put(const char *path, MU_REQUEST_HANDLER handler);
+
+void mu_delete(const char *path, MU_REQUEST_HANDLER handler);
+
+void mu_head(const char *path, MU_REQUEST_HANDLER handler);
 
 int mu_listen(unsigned int port, void (*listen_cb)());
 

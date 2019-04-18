@@ -29,6 +29,8 @@ MHD_RequestCompletedCallback request_completed_cb;
 
 uv_poll_cb on_poll_cb;
 
+static void register_handler(const char *method, const char *path, MU_REQUEST_HANDLER handler);
+
 void shutdown_handler(uv_signal_t *handle, int sig);
 
 int mu_listen(unsigned int port, void (*listen_cb)())
@@ -73,7 +75,32 @@ int mu_listen(unsigned int port, void (*listen_cb)())
 
 void mu_get(const char *path, MU_REQUEST_HANDLER handler)
 {
-    struct ROUTE new_route = { "GET", path, handler };
+    register_handler("GET", path, handler);
+}
+
+void mu_post(const char *path, MU_REQUEST_HANDLER handler)
+{
+    register_handler("POST", path, handler);
+}
+
+void mu_put(const char *path, MU_REQUEST_HANDLER handler)
+{
+    register_handler("PUT", path, handler);
+}
+
+void mu_delete(const char *path, MU_REQUEST_HANDLER handler)
+{
+    register_handler("DELETE", path, handler);
+}
+
+void mu_head(const char *path, MU_REQUEST_HANDLER handler)
+{
+    register_handler("HEAD", path, handler);
+}
+
+static void register_handler(const char *method, const char *path, MU_REQUEST_HANDLER handler)
+{
+    struct ROUTE new_route = { method, path, handler };
 
     if (routes_arr == NULL)
     {
@@ -98,8 +125,6 @@ void mu_get(const char *path, MU_REQUEST_HANDLER handler)
         memcpy(routes_arr + routes_arr_size - 1, &new_route, sizeof(struct ROUTE));
     }
 }
-
-MU_REQUEST_HANDLER user_function = NULL;
 
 struct request_context
 {
@@ -216,6 +241,7 @@ void shutdown_handler(uv_signal_t *handle, int sig)
     printf("closing default loop.\n");
     uv_loop_close(uv_default_loop());
 
+    free(routes_arr);
     printf("exiting\n");
 
     exit(0);
