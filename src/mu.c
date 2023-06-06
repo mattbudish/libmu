@@ -1,10 +1,24 @@
+/*
+ _ _ _
+| (_) |__  _ __ ___  _   _
+| | | '_ \| '_ ` _ \| | | |
+| | | |_) | | | | | | |_| |
+|_|_|_.__/|_| |_| |_|\__,_|
+
+A simple, reliable, high-performance web server written in pure C.
+
+*/
+
 #include "mu.h"
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
 #include <time.h>
+#include <microhttpd.h>
+#include <uv.h>
 
 struct MU_DATA
 {

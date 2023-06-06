@@ -1,9 +1,6 @@
 #ifndef _MU_H_
 #define _MU_H_
 
-#include <microhttpd.h>
-#include <uv.h>
-
 typedef struct mu_request
 {
     const char *url;
