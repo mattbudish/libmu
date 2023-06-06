@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: libmu
+Description: A library for creating simple, high-performance HTTP servers in pure C
+Version: @VERSION@
+Requires: libmicrohttpd libuv
+Conflicts:
+Libs: -L${libdir} -lmu @LIBS@
+Cflags: -I${includedir}

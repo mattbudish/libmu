@@ -53,3 +53,25 @@ dkms.conf
 
 # VS Code
 .vscode/
+
+# GNU Autotools stuff
+.libs/
+autom4te.cache/
+m4/
+*.deps/
+*.dirstamp
+aclocal.m4
+compile
+config.guess
+config.log
+config.status
+config.sub
+configure
+depcomp
+install-sh
+libtool
+ltmain.sh
+Makefile
+Makefile.in
+missing
+*.pc
