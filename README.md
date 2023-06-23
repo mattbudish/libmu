@@ -1,5 +1,5 @@
 # libmu
-__libmu__ (Manticore Unicorn Library) is a library for creating simple, high-performance HTTP servers in pure C based on [GNU Libmicrohttpd](https://www.gnu.org/software/libmicrohttpd/) and [libuv](http://libuv.org/).
+__libmu__ (Manticore Unicorn Library) is a library for creating simple, asynchronous HTTP servers in pure C based on [GNU Libmicrohttpd](https://www.gnu.org/software/libmicrohttpd/) and [libuv](http://libuv.org/).
 
 ## Example
 ```
